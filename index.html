@@ -3,162 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🖤 자캐 위키 (OC Wiki) 🤍</title>
+    <title>네무위키 :: 자캐 위키</title>
     <style>
         :root {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --border-color: #333333;
-            --text-color: #f0f0f0;
-            --text-sub: #aaaaaa;
-            --badge-public: #2e7d32;
-            --badge-private: #c62828;
+            --wiki-bg: #121212;
+            --wiki-card-bg: #1e1e1e;
+            --wiki-header-bg: #000000;
+            --wiki-border: #333333;
+            --text-main: #e0e0e0;
+            --text-sub: #888888;
+            --wiki-link: #64b5f6;
+            --wiki-table-header: #222222;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--wiki-bg);
+            color: var(--text-main);
             line-height: 1.6;
-            padding: 20px;
+            padding: 15px;
             display: flex;
             justify-content: center;
         }
 
-        .container {
+        .wiki-container {
             width: 100%;
-            max-width: 950px;
-            background: var(--card-bg);
-            border-radius: 20px;
-            border: 2px solid var(--border-color);
-            padding: 25px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+            max-width: 980px;
+            background: var(--wiki-card-bg);
+            border: 1px solid var(--wiki-border);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
-        /* 탭 버튼 스타일 */
-        .tab-menu {
+        /* 탭 버튼 */
+        .tab-bar {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--border-color);
+            gap: 8px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--wiki-border);
             padding-bottom: 10px;
         }
 
         .tab-btn {
             background: #111;
             color: var(--text-sub);
-            border: 1px solid var(--border-color);
-            padding: 8px 18px;
-            border-radius: 12px;
+            border: 1px solid var(--wiki-border);
+            padding: 6px 14px;
+            border-radius: 6px;
             cursor: pointer;
+            font-size: 0.88rem;
             font-weight: bold;
-            transition: all 0.2s;
         }
 
         .tab-btn.active {
-            background: #fff;
-            color: #000;
-        }
-
-        /* 폼 입력창 스타일 */
-        .form-section {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .form-group label {
-            font-size: 0.9rem;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        .form-group input, .form-group textarea {
-            padding: 10px 12px;
-            background: #111;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: #fff;
-            font-size: 0.9rem;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        @media (max-width: 600px) {
-            .form-grid { grid-template-columns: 1fr; }
-        }
-
-        .submit-btn {
             background: #ffffff;
             color: #000000;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-top: 10px;
         }
 
-        .submit-btn:hover {
-            opacity: 0.85;
+        /* 분류 헤더 */
+        .category-box {
+            background: #181818;
+            border: 1px solid var(--wiki-border);
+            border-radius: 4px;
+            padding: 6px 12px;
+            font-size: 0.82rem;
+            color: var(--text-sub);
+            margin-bottom: 15px;
         }
 
-        /* 헤더 스타일 */
-        header {
+        .category-box a {
+            color: var(--wiki-link);
+            text-decoration: none;
+        }
+
+        /* 타이틀 영역 */
+        .wiki-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 15px;
-            margin-bottom: 20px;
+            align-items: flex-end;
+            border-bottom: 2px solid #ffffff;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
         }
 
-        header h1 {
-            font-size: 1.8rem;
+        .wiki-title-group h1 {
+            font-size: 2.1rem;
             color: #ffffff;
+            font-weight: bold;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
         }
 
-        .visibility-badge {
-            font-size: 0.85rem;
-            padding: 5px 12px;
-            border-radius: 12px;
-            font-weight: bold;
-            color: white;
+        .wiki-title-group span {
+            font-size: 1rem;
+            color: var(--text-sub);
+            font-weight: normal;
+        }
+
+        .wiki-meta {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            margin-top: 4px;
+        }
+
+        .wiki-actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .action-badge {
+            background: #000;
+            border: 1px solid var(--wiki-border);
+            color: #fff;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            border-radius: 4px;
             cursor: pointer;
             user-select: none;
         }
 
-        .visibility-badge.public { background-color: var(--badge-public); }
-        .visibility-badge.private { background-color: var(--badge-private); }
+        .action-badge.private {
+            background: #a00;
+        }
 
-        /* 테마곡 재생기 */
-        .theme-music-card {
-            background: #0d0d0d;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 12px;
+        /* YouTube 테마곡 플레이어 */
+        .bgm-player {
+            background: #0a0a0a;
+            border: 1px solid var(--wiki-border);
+            border-radius: 6px;
+            padding: 10px;
             margin-bottom: 20px;
         }
 
@@ -167,9 +148,9 @@
             width: 100%;
             height: 0;
             padding-bottom: 56.25%;
-            border-radius: 8px;
-            overflow: hidden;
             margin-top: 8px;
+            border-radius: 4px;
+            overflow: hidden;
         }
 
         .iframe-container iframe {
@@ -177,218 +158,337 @@
             top: 0; left: 0; width: 100%; height: 100%; border: 0;
         }
 
-        /* 레이아웃 */
-        .profile-grid {
+        /* 본문 + 프로필 표 레이아웃 */
+        .wiki-content-grid {
             display: grid;
-            grid-template-columns: 1fr 300px;
+            grid-template-columns: 1fr 320px;
             gap: 20px;
         }
 
         @media (max-width: 768px) {
-            .profile-grid { grid-template-columns: 1fr; }
+            .wiki-content-grid { grid-template-columns: 1fr; }
         }
 
-        /* 프로필 표 */
-        .wiki-table {
+        /* 오른쪽 나무위키/네무위키 프로필 표 */
+        .infobox {
             width: 100%;
             border-collapse: collapse;
             background: #181818;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-        }
-
-        .wiki-table th, .wiki-table td {
-            padding: 8px 10px;
-            border: 1px solid var(--border-color);
+            border: 2px solid #000000;
             font-size: 0.85rem;
         }
 
-        .wiki-table th {
-            background: #0a0a0a;
+        .infobox-title {
+            background: #000000;
             color: #ffffff;
-            width: 35%;
+            font-size: 1.1rem;
+            font-weight: bold;
             text-align: center;
+            padding: 10px;
         }
 
-        .character-img {
+        .infobox-image {
+            text-align: center;
+            background: #000;
+            padding: 10px;
+        }
+
+        .infobox-image img {
             width: 100%;
-            border-radius: 8px;
+            max-height: 380px;
             object-fit: cover;
-            max-height: 350px;
-            display: block;
-            background-color: #000;
+            border-radius: 4px;
         }
 
-        /* 본문 및 목차 */
+        .infobox th {
+            background: var(--wiki-table-header);
+            color: #ffffff;
+            width: 30%;
+            padding: 6px 10px;
+            border: 1px solid var(--wiki-border);
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .infobox td {
+            padding: 6px 10px;
+            border: 1px solid var(--wiki-border);
+            background: #121212;
+        }
+
+        /* 목차 */
         .toc-box {
-            background: #111;
-            border: 1px dashed var(--border-color);
-            border-radius: 10px;
-            padding: 15px;
+            background: #111111;
+            border: 1px solid var(--wiki-border);
+            display: inline-block;
+            min-width: 240px;
+            padding: 12px 18px;
             margin-bottom: 20px;
+            border-radius: 4px;
         }
 
         .toc-title {
             font-weight: bold;
-            margin-bottom: 8px;
-            color: #fff;
+            font-size: 0.95rem;
+            color: #ffffff;
+            margin-bottom: 6px;
+            border-bottom: 1px solid var(--wiki-border);
+            padding-bottom: 4px;
         }
 
         .toc-list {
             list-style: none;
-            padding-left: 10px;
+            font-size: 0.88rem;
         }
 
         .toc-list a {
-            color: var(--text-sub);
+            color: var(--wiki-link);
             text-decoration: none;
-            font-size: 0.9rem;
         }
 
         .toc-list a:hover {
-            color: #fff;
             text-decoration: underline;
         }
 
-        .section-title {
-            font-size: 1.25rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 5px;
-            margin: 25px 0 10px 0;
+        /* 본문 섹션 제목 */
+        .section-header {
+            font-size: 1.3rem;
             color: #ffffff;
+            border-bottom: 1px solid var(--wiki-border);
+            padding-bottom: 4px;
+            margin: 25px 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .quote-box {
-            border-left: 4px solid #fff;
+        .section-header span.edit-btn {
+            font-size: 0.75rem;
+            color: var(--wiki-link);
+            cursor: pointer;
+        }
+
+        .quote-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            border: 1px solid var(--wiki-border);
             background: #181818;
+        }
+
+        .quote-table td {
             padding: 10px 15px;
-            margin: 15px 0;
-            border-radius: 0 8px 8px 0;
+            text-align: center;
             font-style: italic;
         }
 
-        /* 비밀 프로필 스포일러 */
-        .spoiler-container {
-            border: 1px solid var(--badge-private);
-            background: #251010;
-            border-radius: 10px;
+        /* 스포일러 경고창 */
+        .spoiler-box {
+            border: 1px solid #772222;
+            background: #1f0a0a;
             margin-top: 25px;
+            border-radius: 4px;
             overflow: hidden;
         }
 
         .spoiler-header {
-            padding: 10px 15px;
-            background: #3d1414;
-            color: #ff8a8a;
+            background: #3a1111;
+            color: #ff9999;
+            padding: 8px 12px;
             font-weight: bold;
+            font-size: 0.85rem;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
         }
 
-        .spoiler-content {
+        .spoiler-body {
             padding: 15px;
             display: none;
-            background: #181818;
+            background: #121212;
+            font-size: 0.9rem;
+        }
+
+        /* 입력 폼 스타일 */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .form-group input, .form-group textarea {
+            background: #111;
+            border: 1px solid var(--wiki-border);
+            color: #fff;
+            padding: 8px 10px;
+            border-radius: 4px;
+            font-size: 0.88rem;
+        }
+
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
         }
 
         .private-notice {
             display: none;
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
             color: var(--text-sub);
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <!-- 탭 선택 메뉴 -->
-    <div class="tab-menu">
-        <button class="tab-btn active" onclick="switchTab('view')">📖 위키 보기</button>
-        <button class="tab-btn" onclick="switchTab('edit')">✏️ 프로필 작성/업로드</button>
+<div class="wiki-container">
+    <!-- 상단 탭 -->
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab('view')">📄 문서 읽기</button>
+        <button class="tab-btn" onclick="switchTab('edit')">✏️ 위키 양식으로 작성/업로드</button>
     </div>
 
-    <!-- 1. 프로필 보기 탭 -->
+    <!-- 1. 문서 읽기 탭 -->
     <div id="view-tab">
-        <header>
-            <h1 id="out-title">🖤 캐릭터 이름을 입력해주세요 🤍</h1>
-            <span class="visibility-badge public" id="visibility-btn" onclick="toggleVisibility()">🌐 공개 프로필</span>
-        </header>
-
-        <div id="private-view" class="private-notice">
-            <h2>🔒 비공개 프로필입니다.</h2>
-            <p>프로필 주인이 '공개'로 변경해야 확인할 수 있습니다.</p>
+        <!-- 상단 분류 -->
+        <div class="category-box">
+            분류: <a href="#">자캐</a> | <a href="#">DTDM</a> | <a href="#">등장인물</a>
         </div>
 
+        <!-- 헤더 영역 -->
+        <div class="wiki-header">
+            <div class="wiki-title-group">
+                <h1 id="out-doc-title">유 세나 <span id="out-doc-sub">yu sena</span></h1>
+            </div>
+            <div class="wiki-actions">
+                <span class="action-badge" id="visibility-btn" onclick="toggleVisibility()">🌐 공개</span>
+                <span class="action-badge">[편집]</span>
+                <span class="action-badge">[역사]</span>
+            </div>
+        </div>
+        <div class="wiki-meta">최근 수정 시각: <span id="out-time">2026-09-17 15:59:49</span></div>
+
+        <!-- 비공개 안내 메세지 -->
+        <div id="private-view" class="private-notice">
+            <h2>🔒 비공개 문서입니다.</h2>
+            <p>이 문서는 비공개 상태로 설정되어 있어 내용을 조회할 수 없습니다.</p>
+        </div>
+
+        <!-- 위키 본문 전체 영역 -->
         <div id="public-view">
-            <!-- 테마곡 재생 플레이어 -->
-            <div class="theme-music-card" id="music-card" style="display:none;">
-                <div style="font-size:0.9rem; font-weight:bold; margin-bottom:5px;">🎵 캐릭터 테마곡 (YouTube BGM)</div>
+            <!-- 유튜브 BGM 플레이어 -->
+            <div class="bgm-player" id="bgm-box" style="display:none;">
+                <div style="font-size:0.85rem; font-weight:bold; color:#fff;">🎵 캐릭터 테마곡 (YouTube BGM)</div>
                 <div class="iframe-container">
                     <iframe id="youtube-player" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="profile-grid">
-                <!-- 왼쪽: 위키 본문 내용 -->
-                <div class="wiki-body">
+            <div class="wiki-content-grid">
+                <!-- 왼쪽 본문 -->
+                <div>
+                    <!-- 나무위키 목차 -->
                     <div class="toc-box">
-                        <div class="toc-title">📋 목차</div>
+                        <div class="toc-title">목차</div>
                         <ul class="toc-list">
                             <li><a href="#sec-1">1. 개요</a></li>
-                            <li><a href="#sec-2">2. 생애 및 특징</a></li>
+                            <li><a href="#sec-2">2. 특징</a></li>
                             <li><a href="#sec-3">3. 작중 행적</a></li>
                             <li><a href="#sec-4">4. 대인 관계</a></li>
                             <li><a href="#sec-5">5. 여담 및 어록</a></li>
                         </ul>
                     </div>
 
-                    <h2 class="section-title" id="sec-1">1. 개요</h2>
-                    <div class="quote-box" id="out-quote">“한마디 문구를 입력해주세요.”</div>
-                    <p id="out-overview">개요 내용을 작성해 주세요.</p>
+                    <!-- 1. 개요 -->
+                    <div class="section-header" id="sec-1">
+                        1. 개요 <span class="edit-btn">[편집]</span>
+                    </div>
+                    <table class="quote-table">
+                        <tr><td id="out-quote">“ 모두의 얼굴에 미소를~! ”</td></tr>
+                    </table>
+                    <p id="out-overview">내용을 입력해 주세요.</p>
 
-                    <h2 class="section-title" id="sec-2">2. 생애 및 특징</h2>
-                    <p id="out-life">생애 및 특징 내용을 작성해 주세요.</p>
+                    <!-- 2. 특징 -->
+                    <div class="section-header" id="sec-2">
+                        2. 특징 <span class="edit-btn">[편집]</span>
+                    </div>
+                    <p id="out-feature">서술</p>
 
-                    <h2 class="section-title" id="sec-3">3. 작중 행적</h2>
-                    <p id="out-story">작중 행적 내용을 작성해 주세요.</p>
+                    <!-- 3. 작중 행적 -->
+                    <div class="section-header" id="sec-3">
+                        3. 작중 행적 <span class="edit-btn">[편집]</span>
+                    </div>
+                    <p id="out-story">서술</p>
 
-                    <h2 class="section-title" id="sec-4">4. 대인 관계</h2>
-                    <p id="out-relation">대인 관계 내용을 작성해 주세요.</p>
+                    <!-- 4. 대인 관계 -->
+                    <div class="section-header" id="sec-4">
+                        4. 대인 관계 <span class="edit-btn">[편집]</span>
+                    </div>
+                    <p id="out-relation">서술</p>
 
-                    <h2 class="section-title" id="sec-5">5. 여담 및 어록</h2>
-                    <p id="out-etc">여담 및 어록 내용을 작성해 주세요.</p>
+                    <!-- 5. 여담 및 어록 -->
+                    <div class="section-header" id="sec-5">
+                        5. 여담 및 어록 <span class="edit-btn">[편집]</span>
+                    </div>
+                    <p id="out-etc">서술</p>
 
-                    <!-- 스포일러 / 비밀 프로필 -->
-                    <div class="spoiler-container" id="spoiler-box" style="display:none;">
+                    <!-- 비밀 프로필 (스포일러 상자) -->
+                    <div class="spoiler-box" id="spoiler-box" style="display:none;">
                         <div class="spoiler-header" onclick="toggleSpoiler()">
-                            <span>⚠️ [스포일러] 비밀 프로필 열기 / 닫기</span>
+                            <span>주의. 아래부터는 비밀 프로필이 이어집니다. 스포일러에 주의하여 주세요.</span>
                             <span id="spoiler-icon">▼</span>
                         </div>
-                        <div class="spoiler-content" id="spoiler-content">
+                        <div class="spoiler-body" id="spoiler-body">
                             <p id="out-secret"></p>
                         </div>
                     </div>
                 </div>
 
-                <!-- 오른쪽: 프로필 테이블 -->
+                <!-- 오른쪽 프로필 표 (인포박스) -->
                 <div>
-                    <table class="wiki-table">
+                    <table class="infobox">
                         <tr>
-                            <th colspan="2" id="out-card-name" style="font-size:1.1rem; background: #000; color: #fff;">캐릭터 이름</th>
+                            <th colspan="2" class="infobox-title" id="out-card-title">유 세나</th>
                         </tr>
                         <tr>
-                            <td colspan="2">
-                                <img id="out-img" src="https://via.placeholder.com/300x350/000000/FFFFFF?text=OC+Image" alt="캐릭터 이미지" class="character-img">
+                            <td colspan="2" class="infobox-image">
+                                <img id="out-img" src="https://via.placeholder.com/300x380/000000/FFFFFF?text=OC+Image" alt="외관 사진">
                             </td>
                         </tr>
+                        <tr><th>본명</th><td id="out-fullname">-</td></tr>
                         <tr><th>출생</th><td id="out-birth">-</td></tr>
+                        <tr><th>국적</th><td id="out-nationality">-</td></tr>
                         <tr><th>성별</th><td id="out-gender">-</td></tr>
                         <tr><th>신체</th><td id="out-body">-</td></tr>
+                        <tr><th>학력</th><td id="out-school">-</td></tr>
                         <tr><th>소속</th><td id="out-affiliation">-</td></tr>
                         <tr><th>MBTI</th><td id="out-mbti">-</td></tr>
+                        <tr><th>가족 관계</th><td id="out-family">-</td></tr>
                     </table>
                 </div>
             </div>
@@ -397,88 +497,62 @@
 
     <!-- 2. 프로필 작성/업로드 탭 -->
     <div id="edit-tab" style="display:none;">
-        <h2 style="margin-bottom: 20px;">✏️ 자캐 설정 업로드 / 양식 입력</h2>
-        <form class="form-section" onsubmit="saveProfile(event)">
+        <h2 style="margin-bottom:15px; color:#fff;">📝 네무위키 양식 프로필 입력</h2>
+        <form onsubmit="saveWiki(event)">
             <div class="form-grid">
                 <div class="form-group">
-                    <label>캐릭터 이름 (한글)</label>
+                    <label>캐릭터 이름</label>
                     <input type="text" id="in-name" placeholder="예: 유 세나" required>
                 </div>
                 <div class="form-group">
-                    <label>영문명 / 작은 글씨 소제목</label>
-                    <input type="text" id="in-subname" placeholder="예: yu sena">
+                    <label>소제목/영문 발음 이름</label>
+                    <input type="text" id="in-sub" placeholder="예: yu sena">
                 </div>
             </div>
 
             <div class="form-group">
-                <label>프로필 이미지 URL</label>
-                <input type="text" id="in-img" placeholder="https://... (이미지 주소 링크)">
+                <label>외관 사진 이미지 URL</label>
+                <input type="text" id="in-img" placeholder="https://... (이미지 주소)">
             </div>
 
             <div class="form-group">
                 <label>캐릭터 테마곡 (유튜브 URL)</label>
-                <input type="text" id="in-youtube" placeholder="https://www.youtube.com/watch?v=...">
+                <input type="text" id="in-bgm" placeholder="https://www.youtube.com/watch?v=...">
             </div>
 
             <div class="form-grid">
-                <div class="form-group">
-                    <label>출생 (생년월일)</label>
-                    <input type="text" id="in-birth" placeholder="예: 2008년 3월 18일">
-                </div>
-                <div class="form-group">
-                    <label>성별</label>
-                    <input type="text" id="in-gender" placeholder="예: 여성">
-                </div>
-                <div class="form-group">
-                    <label>신체</label>
-                    <input type="text" id="in-body" placeholder="예: 162cm / 보통">
-                </div>
-                <div class="form-group">
-                    <label>소속</label>
-                    <input type="text" id="in-affiliation" placeholder="예: 비애고등학교">
-                </div>
-                <div class="form-group">
-                    <label>MBTI</label>
-                    <input type="text" id="in-mbti" placeholder="예: ENFP">
-                </div>
+                <div class="form-group"><label>본명</label><input type="text" id="in-fullname"></div>
+                <div class="form-group"><label>출생</label><input type="text" id="in-birth"></div>
+                <div class="form-group"><label>국적</label><input type="text" id="in-nationality"></div>
+                <div class="form-group"><label>성별</label><input type="text" id="in-gender"></div>
+                <div class="form-group"><label>신체</label><input type="text" id="in-body"></div>
+                <div class="form-group"><label>학력</label><input type="text" id="in-school"></div>
+                <div class="form-group"><label>소속</label><input type="text" id="in-affiliation"></div>
+                <div class="form-group"><label>MBTI</label><input type="text" id="in-mbti"></div>
             </div>
 
             <div class="form-group">
-                <label>대표 한마디 / 명대사</label>
-                <input type="text" id="in-quote" placeholder="“ 모두의 얼굴에 미소를~! ”">
+                <label>가족 관계</label>
+                <input type="text" id="in-family" placeholder="예: 부: 유 OO / 모: OO">
             </div>
 
             <div class="form-group">
-                <label>1. 개요</label>
-                <textarea id="in-overview" placeholder="캐릭터의 전반적인 소개를 적어주세요."></textarea>
+                <label>대표 명대사 / 1차 성장폼 한마디</label>
+                <input type="text" id="in-quote" placeholder="“ 부디 자비를…! ”">
             </div>
+
+            <div class="form-group"><label>1. 개요</label><textarea id="in-overview"></textarea></div>
+            <div class="form-group"><label>2. 특징</label><textarea id="in-feature"></textarea></div>
+            <div class="form-group"><label>3. 작중 행적</label><textarea id="in-story"></textarea></div>
+            <div class="form-group"><label>4. 대인 관계</label><textarea id="in-relation"></textarea></div>
+            <div class="form-group"><label>5. 여담 및 어록</label><textarea id="in-etc"></textarea></div>
 
             <div class="form-group">
-                <label>2. 생애 및 특징</label>
-                <textarea id="in-life" placeholder="캐릭터의 외모 특징이나 걸어온 삶을 적어주세요."></textarea>
+                <label>🔒 비밀 프로필 (스포일러 내용)</label>
+                <textarea id="in-secret" placeholder="주의. 아래부터는 비밀 프로필이 이어집니다."></textarea>
             </div>
 
-            <div class="form-group">
-                <label>3. 작중 행적</label>
-                <textarea id="in-story" placeholder="시간 순서에 따른 사건/행적을 적어주세요."></textarea>
-            </div>
-
-            <div class="form-group">
-                <label>4. 대인 관계</label>
-                <textarea id="in-relation" placeholder="주요 타 캐릭터와의 관계를 적어주세요."></textarea>
-            </div>
-
-            <div class="form-group">
-                <label>5. 여담 및 어록</label>
-                <textarea id="in-etc" placeholder="기타 세부 설정이나 소소한 특징을 적어주세요."></textarea>
-            </div>
-
-            <div class="form-group">
-                <label>🔒 비밀 프로필 (스포일러)</label>
-                <textarea id="in-secret" placeholder="접기/펼치기로 숨겨둘 스포일러 설정을 입력해 주세요."></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">✨ 자캐 위키 프로필 업로드 및 반영</button>
+            <button type="submit" class="submit-btn">✨ 위키 문서 저장 및 게시하기</button>
         </form>
     </div>
 </div>
@@ -486,7 +560,6 @@
 <script>
     let isPublic = true;
 
-    // 탭 전환 함수
     function switchTab(tab) {
         const viewTab = document.getElementById('view-tab');
         const editTab = document.getElementById('edit-tab');
@@ -505,7 +578,6 @@
         }
     }
 
-    // 공개 / 비공개 토글 기능
     function toggleVisibility() {
         isPublic = !isPublic;
         const btn = document.getElementById('visibility-btn');
@@ -513,88 +585,90 @@
         const privateView = document.getElementById('private-view');
 
         if (isPublic) {
-            btn.textContent = '🌐 공개 프로필';
-            btn.className = 'visibility-badge public';
+            btn.textContent = '🌐 공개';
+            btn.className = 'action-badge';
             publicView.style.display = 'block';
             privateView.style.display = 'none';
         } else {
-            btn.textContent = '🔒 비공개 프로필';
-            btn.className = 'visibility-badge private';
+            btn.textContent = '🔒 비공개';
+            btn.className = 'action-badge private';
             publicView.style.display = 'none';
             privateView.style.display = 'block';
         }
     }
 
-    // 스포일러 토글
     function toggleSpoiler() {
-        const content = document.getElementById('spoiler-content');
+        const body = document.getElementById('spoiler-body');
         const icon = document.getElementById('spoiler-icon');
-        if (content.style.display === 'block') {
-            content.style.display = 'none';
+        if (body.style.display === 'block') {
+            body.style.display = 'none';
             icon.textContent = '▼';
         } else {
-            content.style.display = 'block';
+            body.style.display = 'block';
             icon.textContent = '▲';
         }
     }
 
-    // 프로필 업로드(저장) 처리
-    function saveProfile(event) {
-        event.preventDefault();
+    function saveWiki(e) {
+        e.preventDefault();
 
         const name = document.getElementById('in-name').value;
-        const subname = document.getElementById('in-subname').value;
-        const imgUrl = document.getElementById('in-img').value;
-        const youtubeUrl = document.getElementById('in-youtube').value;
-        
-        // 텍스트 반영
-        document.getElementById('out-title').textContent = `🖤 ${name} (${subname}) 🤍`;
-        document.getElementById('out-card-name').textContent = `${name} (${subname})`;
+        const sub = document.getElementById('in-sub').value;
+        const img = document.getElementById('in-img').value;
+        const bgm = document.getElementById('in-bgm').value;
+
+        document.getElementById('out-doc-title').childNodes[0].nodeValue = name + " ";
+        document.getElementById('out-doc-sub').textContent = sub;
+        document.getElementById('out-card-title').textContent = name + (sub ? ` (${sub})` : '');
+
+        document.getElementById('out-fullname').textContent = document.getElementById('in-fullname').value || '-';
         document.getElementById('out-birth').textContent = document.getElementById('in-birth').value || '-';
+        document.getElementById('out-nationality').textContent = document.getElementById('in-nationality').value || '-';
         document.getElementById('out-gender').textContent = document.getElementById('in-gender').value || '-';
         document.getElementById('out-body').textContent = document.getElementById('in-body').value || '-';
+        document.getElementById('out-school').textContent = document.getElementById('in-school').value || '-';
         document.getElementById('out-affiliation').textContent = document.getElementById('in-affiliation').value || '-';
         document.getElementById('out-mbti').textContent = document.getElementById('in-mbti').value || '-';
-        
+        document.getElementById('out-family').textContent = document.getElementById('in-family').value || '-';
+
         document.getElementById('out-quote').textContent = document.getElementById('in-quote').value || '“ ... ”';
-        document.getElementById('out-overview').textContent = document.getElementById('in-overview').value || '내용이 없습니다.';
-        document.getElementById('out-life').textContent = document.getElementById('in-life').value || '내용이 없습니다.';
-        document.getElementById('out-story').textContent = document.getElementById('in-story').value || '내용이 없습니다.';
-        document.getElementById('out-relation').textContent = document.getElementById('in-relation').value || '내용이 없습니다.';
-        document.getElementById('out-etc').textContent = document.getElementById('in-etc').value || '내용이 없습니다.';
+        document.getElementById('out-overview').textContent = document.getElementById('in-overview').value || '서술';
+        document.getElementById('out-feature').textContent = document.getElementById('in-feature').value || '서술';
+        document.getElementById('out-story').textContent = document.getElementById('in-story').value || '서술';
+        document.getElementById('out-relation').textContent = document.getElementById('in-relation').value || '서술';
+        document.getElementById('out-etc').textContent = document.getElementById('in-etc').value || '서술';
 
-        // 이미지 적용
-        if (imgUrl) {
-            document.getElementById('out-img').src = imgUrl;
-        }
+        if (img) document.getElementById('out-img').src = img;
 
-        // 유튜브 테마곡 연동
-        const musicCard = document.getElementById('music-card');
+        // BGM 유튜브 연동
+        const bgmBox = document.getElementById('bgm-box');
         const player = document.getElementById('youtube-player');
-        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-        const match = youtubeUrl.match(regExp);
-
+        const match = bgm.match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/);
         if (match && match[2].length === 11) {
             player.src = `https://www.youtube.com/embed/${match[2]}?autoplay=1`;
-            musicCard.style.display = 'block';
+            bgmBox.style.display = 'block';
         } else {
-            musicCard.style.display = 'none';
+            bgmBox.style.display = 'none';
         }
 
-        // 비밀 프로필 적용
-        const secretText = document.getElementById('in-secret').value;
+        // 비밀 프로필
+        const secret = document.getElementById('in-secret').value;
         const spoilerBox = document.getElementById('spoiler-box');
-        if (secretText) {
-            document.getElementById('out-secret').textContent = secretText;
+        if (secret) {
+            document.getElementById('out-secret').textContent = secret;
             spoilerBox.style.display = 'block';
         } else {
             spoilerBox.style.display = 'none';
         }
 
-        alert('프로필이 성공적으로 위키 페이지에 업로드되었습니다!');
+        // 현재 시각 업데이트
+        const now = new Date();
+        document.getElementById('out-time').textContent = now.toISOString().replace('T', ' ').substring(0, 19);
+
+        alert('위키 문서가 성공적으로 업로드되었습니다!');
         switchTab('view');
     }
 </script>
 
 </body>
-  </html>
+                        </html>
